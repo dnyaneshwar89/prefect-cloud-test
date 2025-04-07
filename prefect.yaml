@@ -14,8 +14,8 @@ push: null
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
-  - prefect.deployments.steps.pip_install:
-      requirements: requirements.txt
+  - shell:
+      command: 'pip install clickhouse_connect'
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/dnyaneshwar89/prefect-cloud-test.git
       branch: main
