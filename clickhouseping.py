@@ -8,8 +8,8 @@ if __name__ == '__main__':
         secure=True
     )
     # print("Result:", client.query("SELECT * from test_source").result_set[0][0])
-    print("Result:", client.query("SELECT * from test_source").result_set)
-    # client.insert("test_source", [['new simple text']],column_names=['data'])
+    # print("Result:", client.query("SELECT * from test_source").result_set)
+    client.insert("test_destination", [['new simple text']],column_names=['data'])
 
 
 # from clickhouse_driver import Client

@@ -8,7 +8,8 @@ def my_task(message):
     return message
 
 
-@task(log_prints=True)
+# @task(log_prints=True)
+@task(retries=3, retry_delay_seconds=[5, 10, 20],log_prints=True)
 def extract_new_data():
     """Extracts new or updated data from the source table using clickhouse_connect."""
     client = clickhouse_connect.get_client(
@@ -40,8 +41,12 @@ def insert_clickhouse_data(data):
         password='m.ZYik17aFDmy',
         secure=True,
     )
+    data.append(('djfjlerj',))
     # values = [(item['data'],) for item in data]  # Create a list of tuples
-    client.insert("test_destination", data,column_names=["data"])
+    res = client.insert("test_destination", data,column_names=["data"])
+    print(res.written_rows)
+    print(res.query_id)
+    print(res.summary)
 
 @flow(log_prints=True)
 def my_flow(message="Hello, Prefect Cloud!"):

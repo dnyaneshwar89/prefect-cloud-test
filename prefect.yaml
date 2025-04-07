@@ -35,4 +35,6 @@ deployments:
       job_variables:
         env:
           EXTRA_PIP_PACKAGES: 'clickhouse_connect'
-    schedules: []
+    schedules:
+      - interval: 300 # Interval in seconds (5 minutes * 60 seconds)
+        active: true
