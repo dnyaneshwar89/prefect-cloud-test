@@ -19,7 +19,7 @@ def extract_new_data():
     )
     try:
         query = f"SELECT * FROM test_source"
-        result = client.query(query).result()
+        result = client.query(query).result_set
         print("Result from test_source: ",result)
         return result
     except Exception as e:
