@@ -15,7 +15,7 @@ my_flow = flow.from_source(
 # Deploy the flow to Prefect Cloud
 if __name__ == "__main__":
     deployment = my_flow.deploy(
-        flow=my_flow,
+        # flow=my_flow,
         name="example-deployment",
         work_pool_name="test",  # Replace with your work pool name
     )
