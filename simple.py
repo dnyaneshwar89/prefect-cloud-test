@@ -1,3 +1,4 @@
+import subprocess
 from prefect import flow, task
 import clickhouse_connect
 
@@ -44,6 +45,7 @@ def insert_clickhouse_data(data):
 
 @flow(log_prints=True)
 def my_flow(message="Hello, Prefect Cloud!"):
+    subprocess.check_call(["pip", "install", "clickhouse_connect"])
     # result = my_task(message)
     result = extract_new_data()
     insert_clickhouse_data(result)

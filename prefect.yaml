@@ -8,27 +8,28 @@ prefect-version: 3.3.1
 
 # build section allows you to manage and build docker images
 build:
+  - 'pip install -r requirements.txt'
 
 # push section allows you to manage if and how this project is uploaded to remote locations
 push:
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
-- prefect.deployments.steps.git_clone:
-    repository: https://github.com/dnyaneshwar89/prefect-cloud-test.git
-    branch: main
+  - prefect.deployments.steps.git_clone:
+      repository: https://github.com/dnyaneshwar89/prefect-cloud-test.git
+      branch: main
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: my-deployment
-  version:
-  tags: []
-  concurrency_limit:
-  description:
-  entrypoint: simple.py:my_flow
-  parameters: {}
-  work_pool:
-    name: test
-    work_queue_name:
-    job_variables: {}
-  schedules: []
+  - name: my-deployment
+    version:
+    tags: []
+    concurrency_limit:
+    description:
+    entrypoint: simple.py:my_flow
+    parameters: {}
+    work_pool:
+      name: test
+      work_queue_name:
+      job_variables: {}
+    schedules: []
