@@ -15,8 +15,8 @@ def extract_new_data():
     client = clickhouse_connect.get_client(
         host='q3zu55b6u5.ap-south-1.aws.clickhouse.cloud',
         user='default',
-        password='m.ZYik17aFDmy',
-        secure=True
+        password='m.ZYik17aFDmy'
+        # secure=True
     )
     try:
         query = f"SELECT * FROM test_source"
